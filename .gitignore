@@ -1,0 +1,9 @@
+node_modules
+dist
+.env
+.env.local
+.vercel
+*.local
+*.tsbuildinfo
+finance-app-preview/
+preview-financas.html
