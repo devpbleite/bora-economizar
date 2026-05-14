@@ -46,16 +46,24 @@ export function DetailsScreen({
           ))}
           {Array.from({ length: 31 }).map((_, index) => {
             const day = index + 1;
-            const hasTransaction = transactions.some((transaction) => getDayFromDate(transaction.date) === day);
+            const dayTransactions = transactions.filter((transaction) => getDayFromDate(transaction.date) === day);
+            const hasIncome = dayTransactions.some((transaction) => transaction.type === "income");
+            const hasExpense = dayTransactions.some((transaction) => transaction.type === "expense");
 
             return (
               <button
-                className={`day ${hasTransaction ? "has-move" : ""} ${selectedDay === day ? "selected" : ""}`}
+                className={`day ${dayTransactions.length ? "has-move" : ""} ${selectedDay === day ? "selected" : ""}`}
                 key={day}
                 onClick={() => onSelectDay(selectedDay === day ? null : day)}
                 type="button"
               >
-                {day}
+                <span>{day}</span>
+                {dayTransactions.length > 0 && (
+                  <i className="day-markers" aria-hidden="true">
+                    {hasIncome && <b className="income-marker" />}
+                    {hasExpense && <b className="expense-marker" />}
+                  </i>
+                )}
               </button>
             );
           })}

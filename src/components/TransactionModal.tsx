@@ -76,11 +76,13 @@ export function TransactionModal({ transaction, defaultDate, onClose, onSave }: 
         <div className="form-grid">
           <label className="field">
             <span>Categoria</span>
-            <select value={selectedCategoryName} onChange={(event) => setCategory(event.target.value)}>
-              {availableCategories.map((item) => (
-                <option key={item.name} value={item.name}>{item.name}</option>
-              ))}
-            </select>
+            <div className="select-shell">
+              <select value={selectedCategoryName} onChange={(event) => setCategory(event.target.value)}>
+                {availableCategories.map((item) => (
+                  <option key={item.name} value={item.name}>{item.name}</option>
+                ))}
+              </select>
+            </div>
           </label>
 
           <label className="field">
