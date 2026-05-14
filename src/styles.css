@@ -41,20 +41,17 @@ button {
 }
 
 .app-shell {
-  width: min(1120px, 100%);
+  width: min(1280px, 100%);
   min-height: 100vh;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(320px, 430px) 1fr;
-  align-items: center;
-  gap: 48px;
-  padding: 32px;
+  padding: 24px;
 }
 
 .app-frame {
   position: relative;
-  width: min(100%, 390px);
-  height: min(860px, calc(100vh - 40px));
+  width: 100%;
+  height: calc(100vh - 48px);
+  min-height: 720px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -137,7 +134,7 @@ h2 {
 .screen {
   flex: 1;
   min-height: 0;
-  padding: 0 16px 18px;
+  padding: 0 22px 22px;
   overflow: auto;
 }
 
@@ -145,6 +142,16 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+
+.summary-screen.active {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(330px, 0.8fr);
+  grid-template-areas:
+    "hero plan"
+    "metrics chart";
+  align-content: start;
+  gap: 18px;
 }
 
 .hero-card,
@@ -160,6 +167,10 @@ h2 {
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent),
     linear-gradient(135deg, var(--mint), var(--sky));
+}
+
+.summary-screen .hero-card {
+  grid-area: hero;
 }
 
 .hero-card strong,
@@ -179,6 +190,7 @@ h2 {
 }
 
 .metric-grid {
+  grid-area: metrics;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
@@ -224,6 +236,11 @@ h2 {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(249, 252, 250, 0.92)),
     radial-gradient(circle at top right, rgba(189, 235, 216, 0.45), transparent 12rem);
+}
+
+.summary-screen > .panel:first-of-type {
+  grid-area: plan;
+  align-self: stretch;
 }
 
 .panel-header,
@@ -290,6 +307,7 @@ h2 {
 }
 
 .chart-panel {
+  grid-area: chart;
   display: grid;
   grid-template-columns: 124px 1fr;
   align-items: center;
@@ -354,6 +372,17 @@ ul {
 
 .details-screen {
   overflow: hidden;
+}
+
+.details-screen.active {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.82fr) minmax(0, 1.18fr);
+  align-items: stretch;
+  gap: 18px;
+}
+
+.details-screen .calendar-card {
+  align-self: start;
 }
 
 .calendar {
@@ -577,33 +606,19 @@ ul {
   line-height: 1.35;
 }
 
-.desktop-notes {
-  max-width: 470px;
+.insights-screen.active {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-content: start;
+  gap: 18px;
 }
 
-.desktop-notes h2 {
-  margin: 10px 0 14px;
-  font-size: clamp(2rem, 4vw, 4.2rem);
-  line-height: 0.98;
+.insights-screen .insight-hero {
+  min-height: 220px;
 }
 
-.desktop-notes p {
-  color: #5f6d7d;
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
-.roadmap {
-  margin-top: 28px;
-  padding: 22px;
-  border-left: 5px solid var(--mint-strong);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.58);
-}
-
-.roadmap p {
-  margin-top: 7px;
-  font-size: 0.96rem;
+.insights-screen .progress-list {
+  grid-row: span 2;
 }
 
 .modal-backdrop {
@@ -779,13 +794,33 @@ ul {
 
   .app-frame {
     width: 100%;
+    min-height: 100vh;
     height: 100vh;
     border: 0;
     border-radius: 0;
   }
 
-  .desktop-notes {
-    display: none;
+  .screen {
+    padding: 0 16px 18px;
+  }
+
+  .summary-screen.active,
+  .details-screen.active,
+  .insights-screen.active {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .summary-screen .hero-card,
+  .metric-grid,
+  .summary-screen > .panel:first-of-type,
+  .chart-panel {
+    grid-area: auto;
+  }
+
+  .insights-screen .insight-hero {
+    min-height: 136px;
   }
 }
 

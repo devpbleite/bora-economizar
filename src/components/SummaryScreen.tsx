@@ -24,7 +24,7 @@ export function SummaryScreen({ transactions, fixedIncome, savingsGoalPercent, o
   ];
 
   return (
-    <section className="screen active">
+    <section className="screen active summary-screen">
       <article className="hero-card">
         <div className="hero-icon">
           <Coins size={23} />

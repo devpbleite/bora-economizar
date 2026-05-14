@@ -47,18 +47,6 @@ export function AppShell({ activeTab, onTabChange, onAddTransaction, children }:
         {children}
       </section>
 
-      <aside className="desktop-notes">
-        <span className="eyebrow">Fluxo definido</span>
-        <h2>Controle leve para virar rotina</h2>
-        <p>
-          Lancamentos diarios, metas mensais e leituras rapidas. A base ja nasce
-          preparada para Vercel Functions e NeonDB quando conectarmos o banco.
-        </p>
-        <div className="roadmap">
-          <strong>Stack fechada</strong>
-          <p>React + Vite + TypeScript, Vercel Functions, NeonDB e lucide-react.</p>
-        </div>
-      </aside>
     </main>
   );
 }

@@ -13,7 +13,7 @@ export function InsightsScreen({ transactions }: InsightsScreenProps) {
   const expectedReserve = Math.max(income - expenses, 0);
 
   return (
-    <section className="screen active">
+    <section className="screen active insights-screen">
       <section className="insight-hero">
         <TrendingUp size={23} />
         <span>Previsao de fechamento</span>
