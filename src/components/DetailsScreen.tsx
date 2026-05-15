@@ -43,9 +43,10 @@ export function DetailsScreen({
     return tYear === viewYear && tMonth === viewMonth + 1;
   });
 
-  const filtered = selectedDay
+  const filtered = (selectedDay
     ? monthTransactions.filter((transaction) => getDayFromDate(transaction.date) === selectedDay)
-    : monthTransactions;
+    : monthTransactions
+  ).sort((a, b) => b.date.localeCompare(a.date));
 
   function goToPrevMonth() {
     onSelectDay(null);

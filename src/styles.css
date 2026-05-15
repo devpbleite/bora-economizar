@@ -1010,11 +1010,21 @@ ul {
     gap: 14px;
   }
 
+  /* Transactions panel: open list, expands with content, no closed box */
   .details-screen .transactions-panel {
     overflow: visible;
-    padding: 14px 16px;
-    margin: 0 16px;
-    width: auto;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    padding: 0 16px;
+    margin: 0;
+  }
+
+  .details-screen .transactions-panel .panel-header {
+    padding: 10px 0 8px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 4px;
   }
 
   .details-screen .transaction-list {
@@ -1034,14 +1044,11 @@ ul {
     min-height: 136px;
   }
 
-  /* Calendar: full screen width on mobile, edge to edge */
+  /* Calendar: same lateral margins as the app */
   .details-screen .calendar-card {
-    border-radius: 0;
-    border-left: 0;
-    border-right: 0;
-    padding: 12px 16px;
-    margin: 0 -16px;
-    width: calc(100% + 32px);
+    border-radius: 18px;
+    padding: 12px 12px;
+    margin: 0 16px;
   }
 
   .details-screen .calendar-card .calendar {
