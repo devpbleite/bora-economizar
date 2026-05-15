@@ -1,5 +1,5 @@
-import { getSql } from "./_db";
-import type { ApiRequest, ApiResponse } from "./types";
+import { getSql } from "./_db.js";
+import type { ApiRequest, ApiResponse } from "./types.js";
 
 type CreateTransactionBody = {
   id?: string;
