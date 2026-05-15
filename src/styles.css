@@ -1013,7 +1013,6 @@ ul {
     gap: 14px;
   }
 
-  /* Transactions panel: open list, expands with content, no closed box */
   .details-screen .transactions-panel {
     overflow: visible;
     border: 0;
@@ -1044,14 +1043,13 @@ ul {
   }
 
   .insights-screen .insight-hero {
-    min-height: 136px;
+    min-height: 120px;
   }
 
-  /* Calendar: full width of container, respecting lateral margins */
   .details-screen .calendar-card {
     align-self: stretch;
     border-radius: 18px;
-    border: 1px solid var(--line); /* Restore border if it was removed by edge-to-edge logic */
+    border: 1px solid var(--line); 
     padding: 12px;
     margin: 0;
   }
@@ -1074,7 +1072,6 @@ ul {
     font-size: 0.94rem;
   }
 
-  /* Hero card: more compact like a bank app */
   .hero-card,
   .insight-hero {
     min-height: 120px;

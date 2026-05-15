@@ -40,12 +40,14 @@ export function InsightsScreen({ transactions, fixedIncome, savingsGoalPercent }
 
   return (
     <section className="screen active insights-screen">
-      <section className="insight-hero">
-        <TrendingUp size={23} />
+      <article className="hero-card">
+        <div className="hero-icon">
+          <TrendingUp size={23} color="#1e4b39" />
+        </div>
         <span>Previsao de fechamento</span>
         <strong>{formatCurrency(expectedReserve)}</strong>
         <small>Reserva esperada se mantiver o ritmo atual</small>
-      </section>
+      </article>
 
       <div className="progress-list">
         <article className="progress-card">
