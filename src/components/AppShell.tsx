@@ -1,4 +1,4 @@
-import { BarChart3, CalendarDays, Lightbulb, Plus } from "lucide-react";
+import { BarChart3, CalendarDays, Lightbulb, PiggyBank, Plus } from "lucide-react";
 import type { ReactNode } from "react";
 
 type TabKey = "home" | "details" | "insights";
@@ -21,11 +21,11 @@ export function AppShell({ activeTab, onTabChange, onAddTransaction, children }:
     <main className="app-shell">
       <section className="app-frame" aria-label="Bora Economizar">
         <header className="topbar">
-          <div>
-            <span className="eyebrow">Maio 2026</span>
+          <div className="brand">
+            <span className="brand-icon"><PiggyBank size={22} /></span>
             <h1>Bora Economizar</h1>
           </div>
-          <button className="icon-button" onClick={onAddTransaction} aria-label="Adicionar movimentacao" type="button">
+          <button className="icon-button" onClick={onAddTransaction} aria-label="Adicionar movimentação" type="button">
             <Plus size={22} />
           </button>
         </header>
@@ -50,3 +50,4 @@ export function AppShell({ activeTab, onTabChange, onAddTransaction, children }:
     </main>
   );
 }
+
