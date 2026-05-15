@@ -486,7 +486,7 @@ ul {
   min-height: 0;
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: 16px;
   overflow: hidden;
 }
 
@@ -930,9 +930,10 @@ ul {
     gap: 14px;
   }
 
-  /* Details screen: full scroll, only navbar fixed */
+  /* Details screen: mobile-first full scroll */
   .details-screen {
     overflow: auto !important;
+    padding: 0 0 18px !important;
   }
 
   .details-screen.active {
@@ -943,10 +944,13 @@ ul {
 
   .details-screen .transactions-panel {
     overflow: visible;
+    padding: 14px 16px;
   }
 
   .details-screen .transaction-list {
     overflow: visible;
+    padding: 8px 0;
+    gap: 8px;
   }
 
   .summary-screen .hero-card,
@@ -960,53 +964,32 @@ ul {
     min-height: 136px;
   }
 
-  /* Calendar full-width on mobile */
+  /* Calendar: full screen width on mobile, edge to edge */
   .details-screen .calendar-card {
-    border-radius: 18px;
-    padding: 12px 6px;
-    margin: 0 -4px;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    padding: 12px 16px;
+    margin: 0 -16px;
+    width: calc(100% + 32px);
   }
 
   .details-screen .calendar-card .calendar {
     border-radius: 14px;
     margin-top: 6px;
     gap: 2px;
-    padding: 2px;
-  }
-
-  /* Fixed calendar height so it doesn't jump between months */
-  .details-screen .calendar-card .calendar {
+    padding: 4px;
     min-height: 220px;
-  }
-
-  /* Compact calendar on mobile */
-  .calendar-card.compact .calendar {
-    gap: 3px;
-    padding: 3px;
   }
 
   .calendar-card.compact .weekday,
   .calendar-card.compact .day {
-    height: 30px;
-    font-size: 0.7rem;
-  }
-
-  /* Transactions panel: proper margins */
-  .details-screen .transactions-panel {
-    padding: 0;
-  }
-
-  .details-screen .transactions-panel .panel-header {
-    padding: 14px 12px 10px;
+    height: 32px;
+    font-size: 0.72rem;
   }
 
   .details-screen .transactions-panel .panel-header h2 {
-    font-size: 0.92rem;
-  }
-
-  .details-screen .transaction-list {
-    padding: 8px 12px;
-    gap: 8px;
+    font-size: 0.94rem;
   }
 
   /* Hero card: more compact like a bank app */
