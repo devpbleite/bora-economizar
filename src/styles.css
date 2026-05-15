@@ -13,6 +13,74 @@
   --shadow: 0 24px 70px rgba(54, 68, 88, 0.16);
 }
 
+/* Splash / Loading Screen */
+.splash-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 16px;
+  background:
+    radial-gradient(circle at top left, rgba(189, 235, 216, 0.7), transparent 34rem),
+    radial-gradient(circle at bottom right, rgba(203, 231, 255, 0.8), transparent 34rem),
+    #f7f4ef;
+}
+
+.splash-logo {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  color: #1e4b39;
+  background: linear-gradient(135deg, var(--mint), #a3e4c4);
+  box-shadow: 0 8px 28px rgba(87, 201, 154, 0.35);
+  animation: splash-pulse 1.6s ease-in-out infinite;
+}
+
+.splash-title {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.splash-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.splash-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--mint-strong);
+  opacity: 0.4;
+  animation: splash-bounce 1.2s ease-in-out infinite;
+}
+
+.splash-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.splash-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes splash-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes splash-bounce {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1.1); }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -945,6 +1013,8 @@ ul {
   .details-screen .transactions-panel {
     overflow: visible;
     padding: 14px 16px;
+    margin: 0 16px;
+    width: auto;
   }
 
   .details-screen .transaction-list {

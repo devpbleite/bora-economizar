@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { PiggyBank } from "lucide-react";
 import { AppShell } from "./components/AppShell";
 import { DetailsScreen } from "./components/DetailsScreen";
 import { InsightsScreen } from "./components/InsightsScreen";
@@ -146,7 +147,17 @@ export default function App() {
   }
 
   if (isLoading) {
-    return <div style={{ display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' }}>Carregando Bora Economizar...</div>;
+    return (
+      <div className="splash-screen">
+        <div className="splash-logo">
+          <PiggyBank size={40} />
+        </div>
+        <h1 className="splash-title">Bora Economizar</h1>
+        <div className="splash-dots">
+          <span /><span /><span />
+        </div>
+      </div>
+    );
   }
 
   return (
