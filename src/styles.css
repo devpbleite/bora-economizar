@@ -975,14 +975,17 @@ ul {
 @media (max-width: 820px) {
   .app-shell {
     display: block;
-    min-height: 100vh;
     padding: 0;
   }
 
   .app-frame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
-    min-height: 100vh;
-    height: 100vh;
+    height: 100%;
     border: 0;
     border-radius: 0;
   }
@@ -1044,12 +1047,12 @@ ul {
     min-height: 136px;
   }
 
-  /* Calendar: edge-to-edge, full screen width */
+  /* Calendar: full width of container, respecting lateral margins */
   .details-screen .calendar-card {
-    border-radius: 0;
-    border-left: 0;
-    border-right: 0;
-    padding: 12px 16px;
+    align-self: stretch;
+    border-radius: 18px;
+    border: 1px solid var(--line); /* Restore border if it was removed by edge-to-edge logic */
+    padding: 12px;
     margin: 0;
   }
 
