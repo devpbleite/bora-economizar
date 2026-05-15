@@ -12,17 +12,16 @@
     "init:db": "node scripts/init_profile.js"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^1.0.2",
     "@vitejs/plugin-react": "^5.1.1",
     "lucide-react": "^0.562.0",
-    "recharts": "^3.5.1",
-    "vite": "^7.3.0",
+    "postgres": "^3.4.9",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react-dom": "^19.2.3",
+    "recharts": "^3.5.1",
+    "vite": "^7.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
-    "typescript-eslint": "^8.50.0",
     "@types/node": "^25.0.2",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
@@ -30,6 +29,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.50.0"
   }
 }

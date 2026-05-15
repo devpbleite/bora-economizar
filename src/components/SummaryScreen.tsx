@@ -16,9 +16,27 @@ export function SummaryScreen({ transactions, fixedIncome, savingsGoalPercent, o
   const net = income - expenses;
   const goalPercent = savingsGoalPercent;
   const goalAmount = fixedIncome * (goalPercent / 100);
-  const freePercent = income > 0 ? Math.max(0, Math.round((net / income) * 100)) : 0;
+
+  // Calculate dynamic daily budget based on remaining days in the month
+  const today = new Date();
+  const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+  const remainingDays = Math.max(lastDayOfMonth - today.getDate(), 1);
+  const spendableAmount = Math.max(fixedIncome - goalAmount - expenses, 0);
+  const dailyBudget = Math.round(spendableAmount / remainingDays);
+
+  // Expense percentage relative to fixed income (or total income if available)
+  const referenceIncome = Math.max(fixedIncome, income, 1);
+  const expensePercent = Math.round((expenses / referenceIncome) * 100);
+  const freePercent = Math.max(0, 100 - expensePercent);
+
+  // Dynamic distribution message
+  const isHealthy = expenses <= (fixedIncome - goalAmount);
+  const distributionMessage = isHealthy
+    ? "O mes esta saudavel: despesas abaixo do limite e reserva projetada acima da meta."
+    : "Atencao: despesas acima do ideal. Revise seus gastos para atingir sua meta.";
+
   const donutData = [
-    { name: "Livre", value: Math.max(net, 0), fill: "#57c99a" },
+    { name: "Livre", value: Math.max(spendableAmount, 0), fill: "#57c99a" },
     { name: "Despesas", value: expenses, fill: "#ff8f8b" },
     { name: "Meta", value: goalAmount, fill: "#5fa8ff" },
   ];
@@ -31,7 +49,7 @@ export function SummaryScreen({ transactions, fixedIncome, savingsGoalPercent, o
         </div>
         <span>Saldo liquido do mes</span>
         <strong>{formatCurrency(net)}</strong>
-        <small>+18% melhor que abril</small>
+        <small>Base: receita fixa de {formatCurrency(fixedIncome)}</small>
       </article>
 
       <div className="metric-grid">
@@ -45,7 +63,7 @@ export function SummaryScreen({ transactions, fixedIncome, savingsGoalPercent, o
           <ArrowDownRight size={20} />
           <span>Despesas</span>
           <strong>{formatCurrency(expenses)}</strong>
-          <small>58% do total</small>
+          <small>{expensePercent}% do total</small>
         </article>
       </div>
 
@@ -65,7 +83,7 @@ export function SummaryScreen({ transactions, fixedIncome, savingsGoalPercent, o
           </div>
         </div>
         <p className="daily-budget">
-          Ela pode gastar ate <strong>R$ 134/dia</strong> no restante do mes para
+          Ela pode gastar ate <strong>{formatCurrency(dailyBudget)}/dia</strong> no restante do mes ({remainingDays} dias) para
           guardar {formatCurrency(goalAmount)}.
         </p>
       </section>
@@ -89,11 +107,11 @@ export function SummaryScreen({ transactions, fixedIncome, savingsGoalPercent, o
             <Target size={19} />
             <h2>Distribuicao</h2>
           </div>
-          <p>O mes esta saudavel: despesas abaixo do limite e reserva projetada acima da meta.</p>
+          <p>{distributionMessage}</p>
           <ul>
-            <li><span className="dot green"></span>Receitas 100%</li>
-            <li><span className="dot coral"></span>Despesas {income > 0 ? Math.round((expenses / income) * 100) : 0}%</li>
-            <li><span className="dot blue"></span>Livre {freePercent}%</li>
+            <li><span className="dot blue" />Meta {goalPercent}%</li>
+            <li><span className="dot coral" />Despesas {expensePercent}%</li>
+            <li><span className="dot green" />Livre {freePercent}%</li>
           </ul>
         </div>
       </section>

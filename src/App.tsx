@@ -23,8 +23,9 @@ export default function App() {
   const [editingTransaction, setEditingTransaction] = useState<Transaction | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Month for filtering, using fixed month to match mock data or current month
-  const currentMonth = "2026-05-01";
+  // Dynamic current month
+  const now = new Date();
+  const currentMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-01`;
 
   const loadData = async () => {
     try {
@@ -187,7 +188,7 @@ export default function App() {
       {isTransactionOpen && (
         <TransactionModal
           transaction={editingTransaction}
-          defaultDate={selectedDay ? `2026-05-${String(selectedDay).padStart(2, "0")}` : "2026-05-13"}
+          defaultDate={selectedDay ? `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(selectedDay).padStart(2, '0')}` : `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`}
           onClose={() => {
             setEditingTransaction(null);
             setIsTransactionOpen(false);
