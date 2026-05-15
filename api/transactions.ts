@@ -100,7 +100,8 @@ export default async function handler(request: ApiRequest<any>, response: ApiRes
     }
 
     if (request.method === "DELETE") {
-      const { id } = request.query;
+      const query = request.query || {};
+      const id = query.id;
 
       if (!id) {
         return response.status(400).json({ error: "Missing transaction id" });

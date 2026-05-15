@@ -6,7 +6,9 @@ export default async function handler(request: ApiRequest<any>, response: ApiRes
     const sql = getSql();
 
     if (request.method === "GET") {
-      const { profileId, month } = request.query;
+      const query = request.query || {};
+      const profileId = query.profileId;
+      const month = query.month;
       if (!profileId || !month) {
         return response.status(400).json({ error: "Missing profileId or month" });
       }
