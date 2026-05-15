@@ -1044,11 +1044,13 @@ ul {
     min-height: 136px;
   }
 
-  /* Calendar: same lateral margins as the app */
+  /* Calendar: edge-to-edge, full screen width */
   .details-screen .calendar-card {
-    border-radius: 18px;
-    padding: 12px 12px;
-    margin: 0 16px;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    padding: 12px 16px;
+    margin: 0;
   }
 
   .details-screen .calendar-card .calendar {
