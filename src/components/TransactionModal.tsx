@@ -1,7 +1,19 @@
 import { X } from "lucide-react";
 import { useMemo, useState } from "react";
-import { categories } from "../data/demoData";
 import type { Transaction, TransactionType } from "../types";
+
+const categories = [
+  { name: "Receita fixa", type: "income", icon: "briefcase" },
+  { name: "Extra", type: "income", icon: "sparkles" },
+  { name: "Receita", type: "income", icon: "wallet" },
+  { name: "Casa", type: "expense", icon: "shopping" },
+  { name: "Alimentacao", type: "expense", icon: "utensils" },
+  { name: "Conta fixa", type: "expense", icon: "zap" },
+  { name: "Saude", type: "expense", icon: "heart" },
+  { name: "Rotina", type: "expense", icon: "car" },
+  { name: "Lazer", type: "expense", icon: "ticket" },
+  { name: "Investimento", type: "expense", icon: "piggy" },
+] as const;
 
 type TransactionModalProps = {
   transaction?: Transaction | null;

@@ -8,6 +8,7 @@ export type Transaction = {
   amount: number;
   type: TransactionType;
   icon: string;
+  category_color?: string;
   notes?: string;
   isRecurring?: boolean;
 };

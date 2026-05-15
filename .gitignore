@@ -7,3 +7,4 @@ dist
 *.tsbuildinfo
 finance-app-preview/
 preview-financas.html
+.env*.local
