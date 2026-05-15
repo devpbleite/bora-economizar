@@ -83,7 +83,7 @@ export function SummaryScreen({ transactions, fixedIncome, savingsGoalPercent, o
           </div>
         </div>
         <p className="daily-budget">
-          Ela pode gastar ate <strong>{formatCurrency(dailyBudget)}/dia</strong> no restante do mes ({remainingDays} dias) para
+          Você pode gastar até <strong>{formatCurrency(dailyBudget)}/dia</strong> no restante do mês ({remainingDays} dias) para
           guardar {formatCurrency(goalAmount)}.
         </p>
       </section>
