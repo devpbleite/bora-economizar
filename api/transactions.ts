@@ -42,10 +42,16 @@ export default async function handler(request: ApiRequest<any>, response: ApiRes
     }
 
     if (request.method === "POST") {
-      const { profileId, categoryId, type, title, amount, transactionDate, notes, isRecurring } = request.body;
+      const { profileId, categoryId, categoryName, type, title, amount, transactionDate, notes, isRecurring } = request.body;
 
       if (!profileId || !type || !title || !amount || !transactionDate) {
         return response.status(400).json({ error: "Missing required transaction fields" });
+      }
+
+      let resolvedCategoryId = categoryId;
+      if (!resolvedCategoryId && categoryName) {
+        const catRows = await sql`select id from categories where name = ${categoryName} limit 1`;
+        if (catRows.length > 0) resolvedCategoryId = catRows[0].id;
       }
 
       const rows = await sql`
@@ -61,7 +67,7 @@ export default async function handler(request: ApiRequest<any>, response: ApiRes
         )
         values (
           ${profileId},
-          ${categoryId ?? null},
+          ${resolvedCategoryId ?? null},
           ${type},
           ${title},
           ${amount},
@@ -76,15 +82,21 @@ export default async function handler(request: ApiRequest<any>, response: ApiRes
     }
 
     if (request.method === "PUT") {
-      const { id, categoryId, type, title, amount, transactionDate, notes, isRecurring } = request.body;
+      const { id, categoryId, categoryName, type, title, amount, transactionDate, notes, isRecurring } = request.body;
 
       if (!id) {
         return response.status(400).json({ error: "Missing transaction id" });
       }
 
+      let resolvedCategoryId = categoryId;
+      if (!resolvedCategoryId && categoryName) {
+        const catRows = await sql`select id from categories where name = ${categoryName} limit 1`;
+        if (catRows.length > 0) resolvedCategoryId = catRows[0].id;
+      }
+
       const rows = await sql`
         update transactions set
-          category_id = ${categoryId ?? null},
+          category_id = ${resolvedCategoryId ?? null},
           type = ${type},
           title = ${title},
           amount = ${amount},

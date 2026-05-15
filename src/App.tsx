@@ -92,6 +92,7 @@ export default function App() {
           profileId,
           type: transaction.type,
           title: transaction.title,
+          categoryName: transaction.category,
           amount: transaction.amount,
           transactionDate: transaction.date,
           isRecurring: transaction.isRecurring
