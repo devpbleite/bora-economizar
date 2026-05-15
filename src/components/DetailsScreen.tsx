@@ -125,7 +125,7 @@ export function DetailsScreen({
       <section className="transactions-panel">
         <div className="panel-header">
           <div>
-            <h2>{selectedDay ? `Movimentacoes do dia ${selectedDay}` : "Movimentacoes do mes"}</h2>
+            <h2>{selectedDay ? `Movimentações do dia ${selectedDay}` : "Movimentações do mês"}</h2>
             <span>
               {filtered.length} lancamento{filtered.length === 1 ? "" : "s"} registrado{filtered.length === 1 ? "" : "s"}
             </span>
@@ -135,7 +135,7 @@ export function DetailsScreen({
 
         <div className="transaction-list">
           {filtered.length === 0 && (
-            <p className="empty-state">Nenhuma movimentacao neste periodo.</p>
+            <p className="empty-state">Nenhuma movimentação neste período.</p>
           )}
           {filtered.map((transaction) => (
             <article className={`transaction ${transaction.type} compact`} key={transaction.id}>

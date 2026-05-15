@@ -937,7 +937,18 @@ ul {
     min-height: 136px;
   }
 
-  /* Even more compact calendar on mobile */
+  /* Calendar full-width: remove side padding so it stretches edge to edge */
+  .details-screen .calendar-card {
+    border-radius: 18px;
+    padding: 12px 8px;
+  }
+
+  .details-screen .calendar-card .calendar {
+    border-radius: 14px;
+    margin-top: 6px;
+  }
+
+  /* Compact calendar on mobile */
   .calendar-card.compact .calendar {
     gap: 3px;
     padding: 3px;
@@ -947,6 +958,59 @@ ul {
   .calendar-card.compact .day {
     height: 30px;
     font-size: 0.7rem;
+  }
+
+  /* Transactions panel header: proper padding and alignment */
+  .details-screen .transactions-panel {
+    padding: 0;
+  }
+
+  .details-screen .transactions-panel .panel-header {
+    padding: 14px 4px 10px;
+  }
+
+  .details-screen .transactions-panel .panel-header h2 {
+    font-size: 0.92rem;
+  }
+
+  .details-screen .transaction-list {
+    padding: 8px 4px;
+    gap: 8px;
+  }
+
+  /* Hero card: more compact like a bank app */
+  .hero-card,
+  .insight-hero {
+    min-height: 120px;
+    padding: 18px 20px;
+    border-radius: 22px;
+    gap: 5px;
+  }
+
+  .hero-card strong,
+  .insight-hero strong {
+    font-size: 1.7rem;
+  }
+
+  .hero-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+  }
+
+  .hero-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Metric cards: slightly tighter */
+  .metric-card {
+    min-height: 96px;
+    padding: 14px;
+  }
+
+  .metric-card strong {
+    font-size: 1.05rem;
   }
 }
 
@@ -992,4 +1056,3 @@ ul {
     height: 26px;
   }
 }
-
